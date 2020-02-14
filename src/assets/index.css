@@ -1,0 +1,15 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+* {
+    outline: none;
+}
+
+.v--modal-box.v--modal {
+    @apply bg-transparent;
+    @apply shadow-xl;
+    @apply rounded-lg;
+}
