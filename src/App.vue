@@ -21,10 +21,22 @@
 import TrellaBoard from './components/TrellaBoard.vue'
 
 export default {
-  name: 'App',
-  components: {
-    TrellaBoard
-  }
+    name: 'App',
+    components: {
+        TrellaBoard,
+    },
+
+    data() {
+        return {
+
+        };
+    },
+
+    methods: {
+        // showCardModal() {
+        //     this.$modal.show('modalKey');
+        // },
+    },
 }
 </script>
 

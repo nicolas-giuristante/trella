@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 * {
-    outline: none;
+    outline: none !important;
 }
 
 .v--modal-box.v--modal {
