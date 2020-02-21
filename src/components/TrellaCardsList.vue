@@ -16,7 +16,7 @@
             />
         </div>
 
-        <div class="p-4 rounded-b-lg | transition-colors ease-out duration-500 focus-within:bg-white-alpha-10">
+        <div class="p-4 rounded-b-lg">
             <button class="px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50" @click="createCard">
                 Add card
             </button>
@@ -53,22 +53,15 @@
         },
 
         computed: {
-            // generatedKey() {
-            //     return this.generateKey;
-            // },
         },
 
         methods: {
-            // generateKey() {
-            //     Math.random().toString(12);
-            //     console.log(this.generateKey);
-            // },
-
             createCard() {
                 this.newCardVisibility = true;
-                this.$nextTick(() => {
-                    this.$refs.newCardTitle.focus()
-                });
+
+                // this.$nextTick(() => {
+                //     this.$refs.newCardTitle.focus()
+                // });
             },
         },
     }

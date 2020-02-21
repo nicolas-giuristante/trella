@@ -3,10 +3,9 @@
         <input
             class="w-full mb-4 p-2 rounded bg-white-alpha-50"
             placeholder="Card Title"
-            ref="newCardTitle"
             @keyup.enter="saveNewCard()"
             @keyup.escape="dismissNewCard()"
-            v-model="newCardTitle"
+            v-model="newCardTitleInput"
         />
 
         <div class="flex justify-center items-center">
@@ -27,18 +26,21 @@
 
         data() {
             return {
-                newCardTitle: "",
                 newCardVisibility: false,
+                newCardTitleInput: ""
             };
         },
 
         props: {
-
+            newCardTitle: {
+                type: String,
+                required: false,
+            }
         },
 
         methods:{
             dismissNewCard() {
-                this.newCardTitle = "";
+                this.newCardTitleInput = "";
                 this.newCardVisibility = false;
             },
 
@@ -47,7 +49,7 @@
                     return "";
                 }
 
-                this.cards.push({ name: this.newCardTitle });
+                $eventBus.$emit("save-new-card", this.newCardTitle);
 
                 this.dismissNewCard();
             },

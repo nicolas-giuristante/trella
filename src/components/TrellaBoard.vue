@@ -8,7 +8,7 @@
 
         <div class="w-80 mx-4 p-4 rounded-lg shadow-xl backdrop-blur">
             <button class="px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50">
-                Create List
+                Create List {{ this.keyGenerator }}
             </button>
         </div>
     </div>
@@ -119,11 +119,35 @@
                         ],
                     },
                 ],
+                // generatedKey: this.keyGenerator,
             };
         },
 
         props: {
 
+        },
+
+        computed: {
+            keyGenerator() {
+                return Math.random().toString(36).substr(2, 9);
+            },
+        },
+
+        methods: {
+            saveNewCard() {
+                console.log(this.cardsLists[1].cards[1]);
+                // console.log(this.generatedKey);
+                // debugger;
+                // this.cardsLists.cards.push({ name: this.newCardTitle, description: "" });
+            },
+        },
+
+        mounted() {
+            $eventBus.$on("save-new-card", this.saveNewCard);
+        },
+
+        beforeDestroyed() {
+            $eventBus.$off("save-new-card");
         },
     }
 </script>
