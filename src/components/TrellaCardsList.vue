@@ -13,11 +13,13 @@
 
             <trella-new-card
                 v-show="this.newCardVisibility"
+                :cards-list-id="this.cardsList.id"
+                @dismimiss-new-card="dismissNewCard"
             />
         </div>
 
         <div class="p-4 rounded-b-lg">
-            <button class="px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50" @click="createCard">
+            <button class="px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50" @click="createNewCard()">
                 Add card
             </button>
         </div>
@@ -56,13 +58,17 @@
         },
 
         methods: {
-            createCard() {
+            createNewCard() {
                 this.newCardVisibility = true;
-
-                // this.$nextTick(() => {
-                //     this.$refs.newCardTitle.focus()
-                // });
             },
+
+            dismissNewCard() {
+                this.newCardVisibility = false;
+            },
+        },
+
+        mounted() {
+            window.$eventBus.$on("dismimiss-new-card", this.dismissNewCard);
         },
     }
 </script>

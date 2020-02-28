@@ -5,7 +5,7 @@
             placeholder="Card Title"
             @keyup.enter="saveNewCard()"
             @keyup.escape="dismissNewCard()"
-            v-model="newCardTitleInput"
+            v-model="newCardTitle"
         />
 
         <div class="flex justify-center items-center">
@@ -27,21 +27,27 @@
         data() {
             return {
                 newCardVisibility: false,
-                newCardTitleInput: ""
+                newCardTitle: "",
+                // newCard: {
+                //     id: this.keyGenerator(),
+                // },
             };
         },
 
         props: {
-            newCardTitle: {
+            // newCard: {
+            //     type: String,
+            //     required: true,
+            // }
+            cardsListId: {
                 type: String,
-                required: false,
+                required: true,
             }
         },
 
         methods:{
-            dismissNewCard() {
-                this.newCardTitleInput = "";
-                this.newCardVisibility = false;
+            keyGenerator() {
+                return Math.random().toString(36).substr(2, 9);
             },
 
             saveNewCard() {
@@ -49,10 +55,21 @@
                     return "";
                 }
 
-                $eventBus.$emit("save-new-card", this.newCardTitle);
+                window.$eventBus.$emit("save-new-card", {
+                    id: this.keyGenerator(),
+                    title: this.newCardTitle
+                },
+                    this.cardsListId,
+                    // console.log(this.cardsListId),
+                );
 
                 this.dismissNewCard();
             },
+
+            dismissNewCard() {
+                this.newCardTitle = "";
+                this.$emit("dismimiss-new-card");
+            }
         }
     }
 </script>
