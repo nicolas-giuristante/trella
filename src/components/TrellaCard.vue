@@ -31,16 +31,19 @@
 
 <script>
     export default {
-        name: 'trella-card',
+        name: 'TrellaCard',
 
         props: {
 
         },
+<<<<<<< Updated upstream
 
         methods:{
             showCardModal() {
                 this.$modal.show('modalKey');
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 </script>
