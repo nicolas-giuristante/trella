@@ -1,23 +1,15 @@
 <template>
-    <div class="flex flex-col w-80 max-h-full rounded-lg shadow-xl backdrop-blur">
+    <div class="flex flex-col w-80 mx-4 max-h-full rounded-lg shadow-xl backdrop-blur">
         <div class="rounded-t-lg | transition-colors ease-out duration-500 focus-within:bg-white-alpha-10">
-<<<<<<< Updated upstream
-            <input class="w-full p-4 text-xl text-white border-none bg-transparent" value="Lorem ipsum" />
-=======
             <input
                 class="w-full p-4 text-xl text-white border-none bg-transparent"
                 type="text"
                 readonly
                 :value="cardsList.title"
             />
->>>>>>> Stashed changes
         </div>
 
-        <!-- relative w-80 h-full max-h-full   -->
         <div class="flex-1 max-h-full overflow-y-auto px-4 pt-4 rounded-b-lg">
-<<<<<<< Updated upstream
-            <trella-card />
-=======
             <trella-card
                 :key="index"
                 :card="card"
@@ -38,24 +30,29 @@
             >
                 Add card
             </button>
->>>>>>> Stashed changes
         </div>
     </div>
 </template>
 
 <script>
     import TrellaCard from './TrellaCard.vue';
+    import TrellaNewCard from './TrellaNewCard.vue';
 
     export default {
         name: 'TrellaCardsList',
 
         components: {
             TrellaCard,
+            TrellaNewCard
+        },
+
+        data() {
+            return {
+                newCardVisibility: false,
+            };
         },
 
         props: {
-<<<<<<< Updated upstream
-=======
             cardsList: {
                 type: Object,
                 required: true,
@@ -71,8 +68,9 @@
                 this.newCardVisibility = false;
             },
         },
->>>>>>> Stashed changes
 
+        mounted() {
+            window.$eventBus.$on("dismimiss-new-card", this.dismissNewCard);
         },
 
         beforeDestroyed() {

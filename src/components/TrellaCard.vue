@@ -1,14 +1,14 @@
 <template>
-    <div class="w-full max-h-72 mb-4 px-4 py-3 rounded shadow-xl bg-white-alpha-70" @click="showCardModal">
+    <div class="w-full max-h-72 mb-4 p-4 rounded shadow-xl bg-white-alpha-70">
         <h3 class="mb-2 text-lg ">
-            Name of the card
+            {{ card.title }}
         </h3>
 
         <p class="text-sm text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
+            {{ card.description  }}
         </p>
 
-        <modal name="modalKey">
+        <!-- <modal name="modalKey">
             <div class="p-4 bg-white">
                 <h2 class="text-2xl">
                     Name of the card
@@ -25,7 +25,7 @@
                     TEST
                 </button>
             </div>
-        </modal>
+        </modal> -->
     </div>
 </template>
 
@@ -33,17 +33,17 @@
     export default {
         name: 'TrellaCard',
 
-        props: {
+        data() {
+            return {
 
+            };
         },
-<<<<<<< Updated upstream
 
-        methods:{
-            showCardModal() {
-                this.$modal.show('modalKey');
-            }
-        }
-=======
->>>>>>> Stashed changes
+        props: {
+            card: {
+                type: Object,
+                required: true,
+            },
+        },
     }
 </script>

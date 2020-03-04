@@ -1,8 +1,4 @@
 <template>
-<<<<<<< Updated upstream
-    <div class="flex items-start px-6 pt-24 pb-6 bg-cover bg-no-repeat bg-center bg-img-main">
-        <trella-cards-list />
-=======
     <div class="flex items-start px-4 pt-24 pb-6 bg-cover bg-no-repeat bg-center bg-img-main">
         <trella-cards-list
             :cards-list="cardsList"
@@ -14,10 +10,9 @@
             @dismimiss-new-cards-list="dismissNewCardsList"
             v-show="this.newCardsListVisibility"
         />
->>>>>>> Stashed changes
 
         <div class="w-80 mx-4 p-4 rounded-lg shadow-xl backdrop-blur">
-            <button class="px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50">
+            <button class="px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50" @click="showNewCardsList()">
                 Create List
             </button>
         </div>
@@ -26,18 +21,13 @@
 
 <script>
     import TrellaCardsList from './TrellaCardsList.vue';
+    import TrellaNewCardsList from './TrellaNewCardsList.vue';
 
     export default {
         name: 'TrellaBoard',
 
         components: {
             TrellaCardsList,
-<<<<<<< Updated upstream
-        },
-
-        props: {
-
-=======
             TrellaNewCardsList,
         },
 
@@ -183,7 +173,6 @@
         beforeDestroyed() {
             window.$eventBus.$off("save-new-card");
             window.$eventBus.$off("save-new-cards-list");
->>>>>>> Stashed changes
         },
     }
 </script>
