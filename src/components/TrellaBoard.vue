@@ -7,8 +7,8 @@
         />
 
         <trella-new-cards-list
-            v-show="this.newCardsListVisibility"
             @dismimiss-new-cards-list="dismissNewCardsList"
+            v-show="this.newCardsListVisibility"
         />
 
         <div class="w-80 mx-4 p-4 rounded-lg shadow-xl backdrop-blur">
@@ -24,7 +24,7 @@
     import TrellaNewCardsList from './TrellaNewCardsList.vue';
 
     export default {
-        name: 'trella-board',
+        name: 'TrellaBoard',
 
         components: {
             TrellaCardsList,
@@ -35,16 +35,16 @@
             return {
                 cardsLists: [
                     {
-                        id: this.keyGenerator(),
+                        id: this.generateKey(),
                         title: 'In Progress',
                         cards: [
                             {
-                                id: this.keyGenerator(),
+                                id: this.generateKey(),
                                 title: 'Learn Vue.js',
                                 description: 'I shall brute force my way through this knowledge.',
                                 tasksLists: [
                                     {
-                                        id: this.keyGenerator(),
+                                        id: this.generateKey(),
                                         title: 'Basics',
                                         tasks: [
                                             {
@@ -65,7 +65,7 @@
                                         ],
                                     },
                                     {
-                                        id: this.keyGenerator(),
+                                        id: this.generateKey(),
                                         title: 'Not so basic',
                                         tasks: [
                                             {
@@ -85,16 +85,16 @@
                         ],
                     },
                     {
-                        id: this.keyGenerator(),
+                        id: this.generateKey(),
                         title: 'Done',
                         cards: [
                             {
-                                id: this.keyGenerator(),
+                                id: this.generateKey(),
                                 title: 'Learn HTML',
                                 description: 'Easy.',
                                 tasksLists: [
                                     {
-                                        id: this.keyGenerator(),
+                                        id: this.generateKey(),
                                         title: 'Basics',
                                         tasks: [
                                             {
@@ -112,12 +112,12 @@
                                 ],
                             },
                             {
-                                id: this.keyGenerator(),
+                                id: this.generateKey(),
                                 title: 'Learn CSS',
                                 description: 'Easy. But flexbox behaviours were a bit weird to grasp.',
                                 tasksLists: [
                                     {
-                                        id: this.keyGenerator(),
+                                        id: this.generateKey(),
                                         title: '',
                                         tasks: [
                                             {
@@ -136,30 +136,10 @@
             };
         },
 
-        props: {
-
-        },
-
-        computed: {
-
-        },
-
         methods: {
             // Generates random number
-            keyGenerator() {
+            generateKey() {
                 return Math.random().toString(36).substr(2, 9);
-            },
-
-            // Saves the card by pushing it into the main array
-            saveNewCard(newCard, cardsListId) {
-                const matchedCardsListId = this.cardsLists.findIndex(cardsList => cardsList.id === cardsListId);
-                this.cardsLists[matchedCardsListId].cards.push(newCard);
-            },
-
-            // Saves the cards list by pushing it into the main array
-            saveNewCardsList(newCardsList) {
-                this.cardsLists.push(newCardsList);
-                console.log(this.cardsList);
             },
 
             // Shows the temporary new cards list
@@ -171,12 +151,18 @@
             dismissNewCardsList() {
                 this.newCardsListVisibility = false;
             },
-        },
 
-        watch: {
-            newCardsListVisibility() {
-                console.log(this.newCardsListVisibility);
-            }
+            // Saves the card by pushing it into the main array
+            saveNewCard(newCard, cardsListId) {
+                const matchedCardsListId = this.cardsLists.findIndex(cardsList => cardsList.id === cardsListId);
+                this.cardsLists[matchedCardsListId].cards.push(newCard);
+                console.log(this.cardsLists);
+            },
+
+            // Saves the cards list by pushing it into the main array
+            saveNewCardsList(newCardsList) {
+                this.cardsLists.push(newCardsList);
+            },
         },
 
         mounted() {

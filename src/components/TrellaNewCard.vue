@@ -9,11 +9,17 @@
         />
 
         <div class="flex justify-center items-center">
-            <button class="mr-2 px-3 py-2 w-full rounded-lg text-gray-900 bg-green-500" @click="saveNewCard()">
+            <button
+                class="mr-2 px-3 py-2 w-full rounded-lg text-gray-900 bg-green-500"
+                @click="saveNewCard()"
+            >
                 Save
             </button>
 
-            <button class="ml-2 px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50" @click="dismissNewCard()">
+            <button
+                class="ml-2 px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50"
+                @click="dismissNewCard()"
+            >
                 Cancel
             </button>
         </div>
@@ -22,23 +28,16 @@
 
 <script>
     export default {
-        name: 'trella-new-card',
+        name: 'TrellaNewCard',
 
         data() {
             return {
                 newCardVisibility: false,
                 newCardTitle: "",
-                // newCard: {
-                //     id: this.keyGenerator(),
-                // },
             };
         },
 
         props: {
-            // newCard: {
-            //     type: String,
-            //     required: true,
-            // }
             cardsListId: {
                 type: String,
                 required: true,
@@ -46,7 +45,7 @@
         },
 
         methods:{
-            keyGenerator() {
+            generateKey() {
                 return Math.random().toString(36).substr(2, 9);
             },
 
@@ -56,11 +55,10 @@
                 }
 
                 window.$eventBus.$emit("save-new-card", {
-                    id: this.keyGenerator(),
-                    title: this.newCardTitle
+                    id: this.generateKey(),
+                    title: this.newCardTitle,
                 },
                     this.cardsListId,
-                    // console.log(this.cardsListId),
                 );
 
                 this.dismissNewCard();

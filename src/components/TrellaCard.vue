@@ -31,7 +31,7 @@
 
 <script>
     export default {
-        name: 'trella-card',
+        name: 'TrellaCard',
 
         data() {
             return {
@@ -45,9 +45,5 @@
                 required: true,
             },
         },
-
-        methods:{
-
-        }
     }
 </script>

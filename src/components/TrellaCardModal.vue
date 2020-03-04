@@ -8,13 +8,6 @@
 
 <script>
     export default {
-        name: 'trella-card-modal',
-        props: {
-
-        }
-
-        methods:{
-            
-        }
+        name: 'TrellaCardModal',
     }
 </script>

@@ -12,11 +12,17 @@
         </div>
 
         <div class="flex justify-center items-center">
-            <button class="mr-2 px-3 py-2 w-full rounded-lg text-gray-900 bg-green-500" @click="saveNewCardsList()">
+            <button
+                class="mr-2 px-3 py-2 w-full rounded-lg text-gray-900 bg-green-500"
+                @click="saveNewCardsList()"
+            >
                 Save
             </button>
 
-            <button class="ml-2 px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50" @click="dismissNewCardsList()">
+            <button
+                class="ml-2 px-3 py-2 w-full rounded-lg text-gray-900 bg-white-alpha-50"
+                @click="dismissNewCardsList()"
+            >
                 Cancel
             </button>
         </div>
@@ -25,7 +31,7 @@
 
 <script>
     export default {
-        name: 'trella-new-cards-list',
+        name: 'TrellaNewCardsList',
 
         data() {
             return {
@@ -33,12 +39,8 @@
             };
         },
 
-        props: {
-
-        },
-
         methods:{
-            keyGenerator() {
+            generateKey() {
                 return Math.random().toString(36).substr(2, 9);
             },
 
@@ -48,9 +50,12 @@
                 }
 
                 window.$eventBus.$emit("save-new-cards-list", {
-                    id: this.keyGenerator(),
-                    title: this.newCardsListTitle
+                    id: this.generateKey(),
+                    title: this.newCardsListTitle,
+                    cards: [],
                 });
+
+                this.newCardsListTitle = "";
 
                 this.dismissNewCardsList();
             },
