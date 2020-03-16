@@ -2,6 +2,8 @@
     <div id="app" class="h-screen min-w-screen">
         <!-- <modals-container/> -->
 
+        <portal-target name="modalland" />
+
         <nav class="fixed flex items-center justify-between w-full p-4 shadow-xl backdrop-blur">
             <div class="flex items-center">
                 <img class="w-8 mr-4" src="./assets/img/trella-logo.svg" />
@@ -78,5 +80,33 @@ export default {
     }
     .bg-white-alpha-90 {
         background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .bg-black-alpha-10 {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .bg-black-alpha-20 {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .bg-black-alpha-30 {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    .bg-black-alpha-40 {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .bg-black-alpha-50 {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .bg-black-alpha-60 {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    .bg-black-alpha-70 {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    .bg-black-alpha-80 {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .bg-black-alpha-90 {
+        background-color: rgba(0, 0, 0, 0.9);
     }
 </style>
